@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DatabaseConfig
-{
+public class DatabaseConfig {
     private BasicDataSource basicDataSource;
 
     @Bean
@@ -18,9 +17,11 @@ public class DatabaseConfig
     }
 
     @Autowired
-    public DatabaseConfig(@Value("${datasource.url}") String url,
-                          @Value("${datasource.username}") String username,
-                          @Value("${datasource.password}") String password)
+    public DatabaseConfig(
+
+            @Value("${datasource.url}") String url,
+            @Value("${datasource.username}") String username,
+            @Value("${datasource.password}") String password)
     {
         basicDataSource = new BasicDataSource();
         basicDataSource.setUrl(url);

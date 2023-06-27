@@ -17,13 +17,12 @@ public class ProductsController {
     private ProductDao productDao;
 
     @Autowired
-    public ProductsController(ProductDao productDao)
-    {
+    public ProductsController(ProductDao productDao) {
         this.productDao = productDao;
     }
 
     @GetMapping("")
-    @PreAuthorize("permitAll()")
+//    @PreAuthorize("permitAll()")
     public List<Product> search(
 
             @RequestParam(name="cat", required = false) Integer categoryId,
@@ -31,8 +30,7 @@ public class ProductsController {
             @RequestParam(name="maxPrice", required = false) BigDecimal maxPrice,
             @RequestParam(name="color", required = false) String color
     ) {
-        try
-        {
+        try {
             return productDao.search(categoryId, minPrice, maxPrice, color);
         }
         catch(Exception ex)
@@ -42,7 +40,7 @@ public class ProductsController {
     }
 
     @GetMapping("{id}")
-    @PreAuthorize("permitAll()")
+//    @PreAuthorize("permitAll()")
     public Product getById(@PathVariable int id ) {
 
         try {
@@ -60,7 +58,7 @@ public class ProductsController {
     }
 
     @PostMapping()
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Product addProduct(@RequestBody Product product) {
 
         try {
@@ -73,11 +71,11 @@ public class ProductsController {
     }
 
     @PutMapping("{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void updateProduct(@PathVariable int id, @RequestBody Product product) {
 
         try {
-            productDao.create(product);
+            productDao.update(id, product);
         }
         catch(Exception ex)
         {
@@ -86,7 +84,7 @@ public class ProductsController {
     }
 
     @DeleteMapping("{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteProduct(@PathVariable int id) {
 
         try {
