@@ -1,9 +1,9 @@
 package org.yearup.data.mysql;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
-
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ import java.util.List;
 
 @Component
 public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
-//    private MySqlDaoBase dataSource;
 
     public MySqlCategoryDao(DataSource dataSource) {
         super(dataSource);
