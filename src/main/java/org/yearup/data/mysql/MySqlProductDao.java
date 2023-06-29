@@ -3,7 +3,6 @@ package org.yearup.data.mysql;
 import org.springframework.stereotype.Component;
 import org.yearup.models.Product;
 import org.yearup.data.ProductDao;
-
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.*;

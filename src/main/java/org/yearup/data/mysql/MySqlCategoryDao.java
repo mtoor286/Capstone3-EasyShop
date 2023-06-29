@@ -1,6 +1,5 @@
 package org.yearup.data.mysql;
 
-import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
@@ -25,7 +24,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
 
         try(
                 Connection connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql,
+                        Statement.RETURN_GENERATED_KEYS);
                 ResultSet resultSet = preparedStatement.executeQuery();
         ) {
 
@@ -51,7 +51,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
         Category category = null;
         try (
                 Connection connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql,
+                        Statement.RETURN_GENERATED_KEYS);
         ) {
             preparedStatement.setLong(1, categoryId);
 
@@ -79,7 +80,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
 
         try(
                 Connection connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql,
+                        Statement.RETURN_GENERATED_KEYS);
         ){
             preparedStatement.setString(1, category.getName());
             preparedStatement.setString(2, category.getDescription());
@@ -113,7 +115,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
 
         try(
                 Connection connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql,
+                        Statement.RETURN_GENERATED_KEYS);
         ){
             preparedStatement.setString(1, category.getName());
             preparedStatement.setString(2, category.getDescription());
@@ -134,7 +137,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
 
         try(
                 Connection connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql,
+                        Statement.RETURN_GENERATED_KEYS);
         ){
             preparedStatement.setLong(1, categoryId);
             preparedStatement.executeUpdate();
